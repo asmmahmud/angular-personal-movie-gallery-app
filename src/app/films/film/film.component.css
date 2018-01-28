@@ -1,0 +1,101 @@
+.film-card {
+  background-color: rgba(245, 245, 245, 1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+  height: 380px;
+  margin-bottom: 1.2rem;
+}
+@media screen  and (max-width: 767px) {
+  .film-card {
+    height: 324px;
+  }
+}
+.film-card .film-pill {
+  display: inline-block;
+  background-color: rgba(132, 132, 132, 0.9);
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, .25);
+  padding: 3px 7px;
+}
+.film-card .card-header {
+  padding: .5rem;
+}
+.film-card .card-title {
+  font-size: 1rem;
+}
+.film-card .card-body {
+  font-size: .8rem;
+  padding: .5rem;
+}
+.film-card .upper-part {
+  padding: 0 0 0.6rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.watch-sec {
+  margin: 0 0 0.5rem;
+  height: 25px;
+}
+.watched-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.question-part {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+button.btn.yes-btn {
+  padding: 2px .5rem;
+  line-height: 1.2;
+}
+.watch-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: rgba(60, 130, 60, .75);
+  color: white;
+  border-radius: 5px;
+}
+.film-card .table {
+  width: 100%;
+}
+.film-card .table tr td {
+  vertical-align: middle;
+  border-top: 1px solid rgb(210, 210, 210);
+  padding: .4rem;
+}
+.film-card .table tr td.label {
+  text-align: left;
+  padding-right: 5px;
+}
+.film-card .table tr td.val {
+  text-align: left;
+  padding-left: 0.5rem;
+}
+.rating-table {
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+}
+.film-card .rating-table.table tr td.label {
+  width: 66%;
+}
+.rating-table tr td.val {
+}
+.lower-table {
+  margin: 0;
+}
+.lower-table tr td.label {
+  width: 16%;
+}
+.lower-table tr td.val {
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}

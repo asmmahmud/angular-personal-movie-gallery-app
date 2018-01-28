@@ -1,0 +1,113 @@
+<div class="row justify-content-start mt-3 mb-3">
+  <div class="col-auto"><a class="btn btn-outline-secondary btn-sm" routerLink="/films">
+    &lt;&lt;Film List Page
+  </a></div>
+</div>
+<div class="row" *ngIf="film">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <td colspan="2">
+          <div class="row">
+            <div class="col-md-5">
+              <table class="table inner-table">
+                <tr>
+                  <td colspan="2" class="value-col"><h5>{{film.title}}</h5></td>
+                </tr>
+                <tr *ngIf="film.top_250">
+                  <td class="label-col">Place in Imdb-250 films</td>
+                  <td class="value-col">
+                    <span class="film-badge">{{film.top_250}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-col">IMDB URL</td>
+                  <td class="value-col"><a [href]="film.imdb_url" target="_blank">imdb.com page</a></td>
+                </tr>
+                <tr>
+                  <td class="label-col">Release Date</td>
+                  <td class="value-col">{{film.release_year}}</td>
+                </tr>
+                <tr>
+                  <td class="label-col">Run Time</td>
+                  <td class="value-col">{{film.runtime_str}}</td>
+                </tr>
+                <tr>
+                  <td class="label-col">Language</td>
+                  <td class="value-col">{{film.language}}</td>
+                </tr>
+                <tr>
+                  <td class="label">IMDB Rating</td>
+                  <td class="val">{{film.imdb_rating}}</td>
+                </tr>
+                <tr *ngIf="film.rottentomatoes_score">
+                  <td class="label-col">Rotten Tomato Score</td>
+                  <td class="value-col">{{film.rottentomatoes_score}}%</td>
+                </tr>
+                <tr *ngIf="film.metacritic_rating">
+                  <td class="label-col">Meta Critic Rating</td>
+                  <td class="value-col">{{film.metacritic_rating}}%</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-7">
+              <img src="{{apiDomain + '/' + film.poster}}" class=" img-fluid film-poster-bg "/>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="label-col">Genres</td>
+        <td class="value-col">{{film.genres.join(' | ')}}</td>
+      </tr>
+      <tr>
+        <td class="label-col">Director</td>
+        <td class="value-col">{{film.director.join(' | ')}}</td>
+      </tr>
+      <tr>
+        <td class="label-col">Casts</td>
+        <td class="value-col">{{film.casts.join(' | ')}}</td>
+      </tr>
+      <tr *ngIf="(isLoggedIn$ | async)">
+        <td class="label-col" *ngIf="film.authUserWatched">Watch Status</td>
+        <td class="label-col" *ngIf="!film.authUserWatched">Have you watched this?</td>
+        <td class="value-col" *ngIf="film.authUserWatched">
+          <span class="film-badge">Watched</span>
+        </td>
+        <td class="value-col" *ngIf="!film.authUserWatched">
+          <button *ngIf="! (isFilmUpdating$ | async)"
+                  class="btn btn-outline-success btn-sm yes-btn" (click)="makeItWatched()">Yes
+          </button>
+          <img *ngIf="isFilmUpdating$ | async" src="assets/ajax_loader_gray_128.gif" width="24" alt="updating.."/>
+        </td>
+      </tr>
+      <tr *ngIf="(isLoggedIn$ | async) && film.authUserWatched && !film.personalNote">
+        <td class="label-col">Add a Personal Note</td>
+        <td class="value-col">
+          <div class="form-group">
+            <textarea class="form-control" rows="10" #personalNote></textarea>
+          </div>
+          <div class="form-group">
+            <img src="assets/ajax_loader_gray_128.gif" width="24" *ngIf="isFilmUpdating$ | async"/>
+            <button *ngIf="!(isFilmUpdating$ | async)"
+                    class="btn btn-outline-primary" (click)="addPersonalNote(personalNote)">Add
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div class="personal-note-para" *ngIf="(isLoggedIn$ | async) && film.personalNote">
+      <h6>My Personal Note on this film</h6>
+      <p [innerHTML]="film.personalNote"></p>
+    </div>
+    <div class="plot-para" *ngIf="film.plot">
+      <h6>Plot</h6>
+      <p [innerHTML]="film.plot"></p>
+    </div>
+    <div class="storyline-para" *ngIf="film.storyline">
+      <h6>Storyline</h6>
+      <p [innerHTML]="film.storyline"></p>
+    </div>
+
+  </div>
+</div>

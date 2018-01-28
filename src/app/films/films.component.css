@@ -1,0 +1,12 @@
+.number-of-item-alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.number-of-item-alert span:first-child {
+  margin-right: .5rem;
+}
+.pagination {
+  justify-content: flex-end;
+}

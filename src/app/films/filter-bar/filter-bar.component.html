@@ -1,0 +1,42 @@
+<div class="filter-bar">
+  <div class="search-sec">
+    <div class="input-group">
+      <input (input)="searchTermChanged($event.target)" type="text" [value]="searchTerm" class="form-control"
+             placeholder="Search">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">
+          <img src="assets/search.svg" class="img-fluid search-icon" alt="search"/>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="pagination-sec">
+<!--    <div class="input-group page-group" *ngIf="listOfPages.length > 0">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="pageInput">Page</label>
+      </div>
+      <select (change)="pageChanged(pageInput)" class="custom-select" id="pageInput" [value]="currentPage" #pageInput>
+        <option *ngFor="let pageNo of listOfPages" [value]="pageNo">{{pageNo}}</option>
+      </select>
+    </div>-->
+    <div class="input-group sorting-criteria-group">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="sortingCriteriaInput">Sorting</label>
+      </div>
+      <select (change)="criteriaChanged(sortingCriteriaInput)" class="custom-select" id="sortingCriteriaInput"
+              [value]="sortCriteria" #sortingCriteriaInput>
+        <option *ngFor="let criteria of listOfSoringCriteria" [value]="criteria">{{criteria}}</option>
+      </select>
+    </div>
+    <div class="input-group sorting-order-group">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="sortingOrderInput">Order</label>
+      </div>
+      <select (change)="sortingOrderChanged(sortingOrderInput)" class="custom-select" id="sortingOrderInput"
+              [value]="sortingOrder" #sortingOrderInput>
+        <option value="asc">asc</option>
+        <option value="desc">desc</option>
+      </select>
+    </div>
+  </div>
+</div>

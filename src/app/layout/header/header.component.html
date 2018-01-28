@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container-fluid">
+    <a routerLink="/" class="navbar-brand">
+      <h1>Film Diary</h1>
+    </a>
+    <button class="navbar-toggler"
+            (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed"
+            type="button"
+            aria-controls="navbarNavDropdown"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown" [ngbCollapse]="isCollapsed">
+      <ul class="navbar-nav">
+        <li class="nav-item search-nav-item" #searchNavItem>
+          <div class="input-group">
+            <input name="navbarSearch" id="navbarSearch" class="form-control" placeholder="Search Film"
+                   aria-label="Search Film"
+                   [(ngModel)]="navbarSearch"
+                   (focus)="navbarSearchHandler()"
+                   (input)="navbarSearchHandler()"
+                   aria-describedby="navbar-search-icon">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="navbar-search-icon">
+                <img src="assets/search.svg" width="24" alt="search"/>
+              </span>
+            </div>
+          </div>
+          <div class="navbar-search-result" *ngIf="this.foundFilms.length > 0">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let film of foundFilms">
+                <a class="autocomplete-link" [routerLink]="['/films', film.filmId]">{{film.title}}</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/films">Films</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/about-us">About Us</a>
+        </li>
+        <li *ngIf="isLoggedIn; else notLoggedInBlock" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"
+             (click)="toggleDropdown($event)" href="#"
+             id="navbarDropdownMenuLink">
+            <img src="/assets/settings-gears.svg" width="16" alt="Settings"/>
+          </a>
+          <div [class.show]="isDropDownOpen" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="/profile-edit">Edit Profile</a>
+            <a class="dropdown-item" href="#" (click)="userSignOut($event)">Sign Out</a>
+          </div>
+        </li>
+        <ng-template #notLoggedInBlock>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/signup">Sign Up</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/signin">Sign In</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+
+</nav>

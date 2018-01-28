@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+  <div class="col col-sm-10 col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">
+          Update your Profile
+        </h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="updateForm" novalidate>
+          <div class="form-group">
+            <label class="form-control-label" for="first_name">First Name</label>
+            <input id="first_name"
+                   class="form-control"
+                   formControlName="first_name"
+                   placeholder="First Name"/>
+            <div *ngIf="isValid('first_name')" class="alert alert-danger">
+              <div *ngIf="isShow(['first_name'], 'required')">First Name can't be empty.</div>
+              <div *ngIf="isShow(['first_name'], 'minlength')">First Name has to be atleast 3 characters long.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="last_name">Last Name</label>
+            <input id="last_name"
+                   class="form-control"
+                   formControlName="last_name"
+                   placeholder="Last Name"/>
+            <div *ngIf="isValid('last_name')" class="alert alert-danger">
+              <div *ngIf="isShow(['last_name'], 'required')">Last name can't be empty.</div>
+              <div *ngIf="isShow(['last_name'], 'minlength')">Last name has to be atleast 3 characters long.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="email">Email</label>
+            <input type="email" id="email"
+                   class="form-control"
+                   placeholder="Email Address"
+                   formControlName="email" >
+          </div>
+          <div formGroupName="passwords">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" formControlName="password" id="password" class="form-control">
+              <div *ngIf="isValid('passwords.password')" class="alert alert-danger">
+                <div *ngIf="isShow(['passwords','password'], 'required')">Password is required.</div>
+                <div *ngIf="isShow(['passwords','password'], 'minlength')">Password has to be atleast 4 characters
+                  long.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password_confirm">Confirm Password</label>
+              <input type="password" id="password_confirm" class="form-control" formControlName="password_confirm">
+              <div class="alert alert-danger"
+                   *ngIf="updateForm.get('passwords').hasError('notSame')
+                        && !updateForm.get('passwords.password_confirm').untouched &&
+                        updateForm.get('passwords.password_confirm').touched">
+                Passwords don't match.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="thumb_path">Thumbnail Path</label>
+            <input id="thumb_path"
+                   class="form-control"
+                   placeholder="Thumbnail Path"
+                   formControlName="thumb_path"/>
+            <div *ngIf="isValid('thumb_path')" class="alert alert-danger">
+              <span *ngIf="isShow(['thumb_path'], 'pattern')">Please enter a valid Thumbnail Path.</span>
+            </div>
+          </div>
+          <button type="submit" (click)="onUpdate()" class="btn btn-outline-primary" [disabled]="!updateForm.valid">
+            Update
+          </button>
+          <button type="button" (click)="onUpdate()" class="btn btn-outline-secondary">Debug</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

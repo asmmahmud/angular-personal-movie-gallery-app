@@ -1,0 +1,60 @@
+<div class="card film-card">
+  <div class="card-header">
+    <h5 class="card-title">{{film.title}}</h5>
+  </div>
+  <div class="card-body">
+    <div class="upper-part">
+      <span class="run-time">Run Time: {{film.runtime_str}}</span>
+      <span class="film-pill" title="Release Year"> {{film.release_year}}</span>
+    </div>
+    <div class="watch-sec" *ngIf="isLoggedIn">
+      <div *ngIf="film.authUserWatched" class="watched-block">
+        <span class="watch-badge">Watched</span>
+        <button *ngIf="film.personalNote.length === 0" (click)="showModel()"
+                class="btn btn-outline-primary btn-sm btn-xm">Add Note</button>
+      </div>
+      <div *ngIf="!film.authUserWatched" class="question-part">
+        <div class="question">Have you watched this?</div>
+        <button *ngIf="!isFilmUpdating || !isWatchedClicked"
+                class="btn btn-outline-success btn-sm yes-btn" (click)="makeItWatched()">Yes
+        </button>
+        <img *ngIf="isWatchedClicked && isFilmUpdating" src="assets/ajax_loader_gray_128.gif" width="24" alt="updating.."/>
+      </div>
+    </div>
+    <table class="table rating-table">
+      <tbody>
+      <tr>
+        <td class="label">IMDB Rating</td>
+        <td class="val">{{film.imdb_rating}}</td>
+      </tr>
+      <tr *ngIf="film.rottentomatoes_score">
+        <td class="label">Rotten Tomato Score</td>
+        <td class="val">{{film.rottentomatoes_score}}%</td>
+      </tr>
+      <tr *ngIf="film.metacritic_rating">
+        <td class="label">Meta Critic Rating</td>
+        <td class="val">{{film.metacritic_rating}}%</td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table lower-table">
+      <tbody>
+      <tr>
+        <td class="label">Director</td>
+        <td class="val str-capitalize">{{film.director.join(' | ')}}</td>
+      </tr>
+      <tr>
+        <td class="label">Genres</td>
+        <td class="val str-capitalize">{{film.genres.join(' | ')}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer">
+    <button (click)="showModel()" type="button" class="btn btn-outline-secondary btn-sm btn-xm">
+      More
+    </button>
+    <a [routerLink]="['/films', film.id]" class="btn btn-outline-secondary btn-sm btn-xm">Detail Page</a>
+  </div>
+</div>
+<ng-template #popContent>Hello, <b>{{name}}</b>!</ng-template>

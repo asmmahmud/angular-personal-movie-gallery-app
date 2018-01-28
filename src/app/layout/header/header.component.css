@@ -1,0 +1,34 @@
+@media only screen and (min-width: 768px) {
+  .navbar .navbar-collapse {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+.navbar-nav {
+  text-align: center;
+}
+.search-nav-item {
+  position: relative;
+  max-width: 250px;
+  min-width: 240px;
+}
+.navbar-search-result {
+  position: absolute;
+  left: 0;
+  font-size: 0.8rem;
+  max-height: 400px;
+  max-width: 250px;
+  min-width: 240px;
+  overflow: scroll;
+  z-index: 919999;
+}
+.navbar-search-result .list-group-item {
+  padding: 3px;
+}
+.navbar-search-result .list-group-item a {
+  text-transform: capitalize;
+  text-decoration: none;
+}
+.hidden {
+  display: none;
+}

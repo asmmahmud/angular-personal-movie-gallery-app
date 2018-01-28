@@ -1,1 +1,84 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+}
+.str-capitalize,
+h1, h2, h3, h4, h5, h6 {
+  text-transform: capitalize;
+}
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+#main-content {
+  min-height: 35rem;
+}
+
+nav.navbar.navbar-expand-md {
+  padding: .25rem 1rem .5rem;
+  box-shadow: 0 0 10px rgba(100, 100, 100, 0.3);
+}
+
+.navbar-brand h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+@media (min-width: 768px) {
+  .navbar-expand-md .navbar-nav .dropdown-menu.show {
+    left: -90px;
+  }
+}
+
+.card-header .card-title {
+  margin-bottom: 0;
+}
+
+div.ng-touched.ng-dirty.ng-invalid .form-control:focus,
+.form-group .ng-dirty.ng-touched.ng-invalid:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(220, 70, 70, .25);
+  box-shadow: 0 0 0 0.2rem rgba(220, 70, 70, .25);
+}
+
+div.ng-touched.ng-dirty.ng-invalid .form-control,
+.form-group .ng-dirty.ng-touched.ng-invalid {
+  border: 1px solid rgba(220, 70, 70, .35);
+}
+
+@media (min-width: 768px) {
+  .modal.show .modal-dialog {
+    max-width: 620px;
+  }
+}
+@media (min-width: 992px) {
+  .modal.show .modal-dialog {
+    max-width: 840px;
+  }
+}
+.modal.show .modal-header {
+  padding: 0.5rem 0.9rem;
+}
+.modal.show .card-body {
+  padding: 0 5px;
+}
+.btn.btn-xm {
+  padding: 2px .5rem;
+  line-height: 1.35;
+}
+.film-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: rgba(60, 130, 60, .75);
+  color: white;
+  border-radius: 5px;
+}

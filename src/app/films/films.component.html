@@ -1,0 +1,68 @@
+<div class="row justify-content-end mt-4 mb-2">
+  <div class="col-md-4">
+    <div class="alert alert-success number-of-item-alert" *ngIf="totalItemCount > 0">
+      <span><img src="assets/checked.svg" width="16" alt="Hurray"/> </span>
+      <span><strong>{{totalItemCount}}</strong> film(s) found.</span>
+    </div>
+    <div *ngIf="totalItemCount === 0" class="alert alert-warning number-of-item-alert">
+      <span><img src="assets/warning-sign.svg" width="16" alt="Opps"/> </span>
+      <span><strong>No</strong> film found.</span>
+    </div>
+  </div>
+  <div class="col-md-8" *ngIf="listOfPages.length > 0">
+    <!--{{currentPage + 1}} <= {{listOfPages.length}}-->
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item" *ngIf="(+currentPage - 1) > 0">
+          <a class="page-link"
+             [routerLink]="['/films']"
+             [queryParams]="buildQueryParams(+currentPage - 1)"
+             aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item " *ngFor="let pageNo of listOfPages" [class.active]="pageNo == currentPage">
+          <a *ngIf="pageNo != currentPage; else elseBlock" class="page-link" [routerLink]="['/films']"
+             [queryParams]="buildQueryParams(pageNo)">{{pageNo}}</a>
+          <ng-template #elseBlock><a class="page-link">{{pageNo}}</a></ng-template>
+        </li>
+        <li class="page-item" *ngIf="(+currentPage + 1) <= listOfPages.length">
+
+          <a class="page-link" aria-label="Next"
+             [routerLink]="['/films']"
+             [queryParams]="buildQueryParams(+currentPage + 1)">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <app-filter-bar
+      [listOfPages]="listOfPages"
+      [currentPage]="currentPage"
+      [searchTerm]="searchTerm"
+      [sortCriteria]="sortCriteria"
+      [sortingOrder]="sortingOrder"
+      (pageChangeEvent)="pageChangeReceiver($event)"
+      (sortingCriteriaChangeEvent)="sortCriteriaChangeReceiver($event)"
+      (sortingOrderChangeEvent)="sortOrderChangeReceiver($event)"
+      (searchTermChangeEvent)="searchTermChangeReceiver($event)"
+    ></app-filter-bar>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-md-4" *ngFor="let film of filmsToShow; trackBy:getFilmKey">
+    <app-film
+      [isFilmUpdating]="isFilmUpdating$ | async"
+      [isLoggedIn]="isLoggedIn$ | async"
+      [film]="film"
+      (showModalEvent)="openModal($event)"
+      (makeWatchEvent)="makeItWatchedHandler($event)"
+    ></app-film>
+  </div>
+</div>
