@@ -7,12 +7,14 @@
   "repository": "https://github.com/asmmahmud/angular-personal-movie-gallery-app.git",
   "keywords": [
     "Angular",
-    "Angular 5+",
+    "Redux",
+    "ng redux",
+    "Angular 5 plus",
     "Example App",
     "Angular Example App",
     "JWT",
     "JSON WEB TOKEN",
-    "Authentication"
+    "angular Authentication"
   ],
   "scripts": {
     "ng": "ng",
@@ -34,11 +36,8 @@
     "@angular/platform-browser": "^5.1.0",
     "@angular/platform-browser-dynamic": "^5.1.0",
     "@angular/router": "^5.1.0",
-    "@auth0/angular-jwt": "^1.0.0-beta.9",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.9",
-    "auth0-js": "^9.1.0",
     "core-js": "^2.4.1",
-    "jwt-decode": "^2.2.0",
     "ng-lazyload-image": "^3.4.2",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
