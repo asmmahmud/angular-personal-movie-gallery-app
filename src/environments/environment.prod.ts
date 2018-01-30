@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiServer: 'https://film-diary-api-jwt-auth.herokuapp.com',
 };
