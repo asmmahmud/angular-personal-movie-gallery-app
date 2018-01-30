@@ -4,6 +4,7 @@
   "license": "MIT",
   "author": "A.S.M. Mahmudul Hasan",
   "description": "Persona Movie Gallery built using Angular framework version 5+",
+  "repository": "https://github.com/asmmahmud/angular-personal-movie-gallery-app.git",
   "keywords": [
     "Angular",
     "Angular 5+",
