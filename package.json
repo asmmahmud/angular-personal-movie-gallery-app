@@ -2,7 +2,7 @@
   "name": "angular-personal-movie-gallery-app",
   "version": "0.0.1",
   "license": "MIT",
-  "author": "A.S.M. Mahmudul Hasan",
+  "author": "A.S.M. Mahmudul Hasan <asmmahmud@gmail.com>",
   "description": "Persona Movie Gallery built using Angular framework version 5+",
   "repository": "https://github.com/asmmahmud/angular-personal-movie-gallery-app.git",
   "keywords": [
