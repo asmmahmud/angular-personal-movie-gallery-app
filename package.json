@@ -1,16 +1,27 @@
 {
-  "name": "updated-film-app",
-  "version": "0.0.0",
+  "name": "angular-personal-movie-gallery-app",
+  "version": "0.0.1",
   "license": "MIT",
+  "author": "A.S.M. Mahmudul Hasan",
+  "description": "Persona Movie Gallery built using Angular framework version 5+",
+  "keywords": [
+    "Angular",
+    "Angular 5+",
+    "Example App",
+    "Angular Example App",
+    "JWT",
+    "JSON WEB TOKEN",
+    "Authentication"
+  ],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular-redux/store": "^7.0.2",
     "@angular/animations": "^5.1.0",

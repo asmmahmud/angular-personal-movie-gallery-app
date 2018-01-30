@@ -10,3 +10,13 @@
 .pagination {
   justify-content: flex-end;
 }
+.genre-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.count-label {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

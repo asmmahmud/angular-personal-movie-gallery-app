@@ -9,14 +9,17 @@ import '../../shared/rxjs-imports';
 
 import {UserService} from '../../shared/auth/user.service';
 import {UserModel} from '../../redux-store/data-models/UserModel';
+import {Observable} from 'rxjs/Observable';
+import {select} from '@angular-redux/store';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styles: [``]
 })
 export class SignupComponent {
   signupForm: FormGroup;
+  @select(['auth', 'isUserActionPending']) isUserActionPending$: Observable<boolean>;
   static passwordConfirming(controlName: AbstractControl): { 'notSame': boolean } {
     if (controlName.get('password').value !== controlName.get('password_confirm').value) {
       return {'notSame': true};
@@ -48,7 +51,6 @@ export class SignupComponent {
     return this.signupForm.hasError(validationName, elemPath);
   }
   onSignUp() {
-    console.log(this.signupForm);
     const newUser = new UserModel();
     newUser.setUserData({
       first_name: this.signupForm.value.first_name,

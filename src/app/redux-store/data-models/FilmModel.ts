@@ -1,5 +1,5 @@
 export class FilmModel {
-  static possibleGenres = ['all', 'action', 'adventure', 'animation', 'comedy', 'biography', 'drama', 'crime', 'fantasy',
+  static possibleGenres = ['action', 'adventure', 'animation', 'comedy', 'biography', 'drama', 'crime', 'fantasy',
     'music', 'history', 'horror', 'mystery', 'romance', 'sci-fi', 'thriller', 'western', 'war'];
   static queryProp = ['title', 'release_year', 'director', 'genres', 'casts', 'language'];
   static listOfSortingCriteria = ['title', 'release_year', 'imdb_rating', 'metacritic_rating', 'rottentomatoes_score'];

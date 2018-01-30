@@ -27,8 +27,9 @@ export class FilmsComponent implements OnInit, OnDestroy {
   searchTerm = '';
   isLoggedIn: boolean;
   @select(['films', 'allFilms']) allFilms$: Observable<IAllFilms>;
+  @select(['films', 'isFilmLoading']) isFilmLoading$: Observable<boolean>;
   @select(['auth', 'isLoggedIn']) isLoggedIn$: Observable<boolean>;
-  @select(['allStatuses', 'isFilmUpdating']) isFilmUpdating$: Observable<boolean>;
+  // @select(['allStatuses', 'isFilmUpdating']) isFilmUpdating$: Observable<boolean>;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

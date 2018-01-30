@@ -7,21 +7,20 @@ import {SignupComponent} from './signup/signup.component';
 import {ProfileEditComponent} from './profile-edit/profile-edit.component';
 import {SigninComponent} from './signin/signin.component';
 import {UserRoutingModule} from './user-routing.module';
-
-// import { UpdateWatchlistComponent } from './update-watchlist/update-watchlist.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    UserRoutingModule
+    UserRoutingModule,
+    SharedModule
   ],
   declarations: [
     SignupComponent,
     ProfileEditComponent,
-    SigninComponent,
-    // UpdateWatchlistComponent
+    SigninComponent
   ],
   exports: [
     SignupComponent,

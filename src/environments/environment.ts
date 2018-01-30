@@ -4,8 +4,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
+  protocol: 'https',
   production: false,
-  apiServer: 'http://localhost:9000',
+  apiServer: 'https://film-diary-api-jwt-auth.herokuapp.com',
+  // apiServer: 'http://localhost:9000',
   tokenGetter: () => {
     return window.localStorage.getItem('access_token');
   },
@@ -13,6 +15,6 @@ export const environment = {
     tokenGetter: () => {
       return window.localStorage.getItem('access_token');
     },
-    whitelistedDomains: ['localhost:9000']
+    whitelistedDomains: ['film-diary-api-jwt-auth.herokuapp.com']
   }
 };

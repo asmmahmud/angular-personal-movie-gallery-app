@@ -1,9 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {NgRedux, NgReduxModule} from '@angular-redux/store';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {createLogger} from 'redux-logger';
 import {SharedModule} from './shared/shared.module';
 import {AppRoutingModule} from './app-routing.module';
 
@@ -27,7 +27,8 @@ import {UserService} from './shared/auth/user.service';
 import {RedirectIfLoggedin} from './shared/auth/redirect-if-loggedin';
 import {AuthGuardService} from './shared/auth/auth-guard.service';
 import {FilmService} from './shared/films/film.service';
-import {FormsModule} from '@angular/forms';
+
+// import {createLogger} from 'redux-logger';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import {FormsModule} from '@angular/forms';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
   constructor(public store: NgRedux<IAppState>, public rootEpic: RootEpic) {
     const middleware = [

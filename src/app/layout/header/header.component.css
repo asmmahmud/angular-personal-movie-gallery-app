@@ -11,6 +11,12 @@
   position: relative;
   max-width: 250px;
   min-width: 240px;
+  margin-top: 5px;
+  margin-right: 1rem;
+}
+.search-nav-item .input-group-text,
+.search-nav-item .form-control {
+  padding: .2rem .6rem;
 }
 .navbar-search-result {
   position: absolute;

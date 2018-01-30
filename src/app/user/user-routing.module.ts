@@ -6,13 +6,11 @@ import {SignupComponent} from './signup/signup.component';
 import {SigninComponent} from './signin/signin.component';
 import {AuthGuardService} from '../shared/auth/auth-guard.service';
 import {RedirectIfLoggedin} from '../shared/auth/redirect-if-loggedin';
-// import {UpdateWatchlistComponent} from './update-watchlist/update-watchlist.component';
 
 const routes: Routes = [
     { path: 'profile-edit', canActivate: [AuthGuardService], component: ProfileEditComponent},
     { path: 'signin', canActivate: [RedirectIfLoggedin], component: SigninComponent},
     { path: 'signup', canActivate: [RedirectIfLoggedin], component: SignupComponent},
-    // { path: 'update-watchlist', canActivate: [AuthGuardService], component: UpdateWatchlistComponent}
 ];
 
 @NgModule({

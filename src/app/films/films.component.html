@@ -1,8 +1,16 @@
-<div class="row justify-content-end mt-4 mb-2">
+<app-ajax-loader width="128px" *ngIf="isFilmLoading$ | async"></app-ajax-loader>
+<div *ngIf="!(isFilmLoading$ | async)" class="row justify-content-end mt-4 mb-2">
   <div class="col-md-4">
     <div class="alert alert-success number-of-item-alert" *ngIf="totalItemCount > 0">
-      <span><img src="assets/checked.svg" width="16" alt="Hurray"/> </span>
-      <span><strong>{{totalItemCount}}</strong> film(s) found.</span>
+      <div *ngIf="genre" class="genre-label">
+        <strong>Genre: </strong>
+        <h6 style="text-transform: capitalize; margin: 0 1rem 0 .5rem;">{{genre}}</h6>
+      </div>
+      <div class="count-label">
+        <span><img src="assets/checked.svg" width="16" alt="Hurray"/> </span>
+        <strong>{{totalItemCount}}</strong>
+        <span style="margin-left: 5px;">film(s) found.</span>
+      </div>
     </div>
     <div *ngIf="totalItemCount === 0" class="alert alert-warning number-of-item-alert">
       <span><img src="assets/warning-sign.svg" width="16" alt="Opps"/> </span>
@@ -40,7 +48,7 @@
     </nav>
   </div>
 </div>
-<div class="row">
+<div class="row" *ngIf="!(isFilmLoading$ | async)">
   <div class="col-12">
     <app-filter-bar
       [listOfPages]="listOfPages"
@@ -55,7 +63,7 @@
     ></app-filter-bar>
   </div>
 </div>
-<div class="row">
+<div class="row" *ngIf="!(isFilmLoading$ | async)">
   <div class="col-sm-6 col-md-4" *ngFor="let film of filmsToShow; trackBy:getFilmKey">
     <app-film
       [isFilmUpdating]="isFilmUpdating$ | async"

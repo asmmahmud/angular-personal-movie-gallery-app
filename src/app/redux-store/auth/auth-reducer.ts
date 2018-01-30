@@ -6,15 +6,22 @@ import {UserModel} from '../data-models/UserModel';
 export const authInitialState: IAuth = {
   isLoggedIn: false,
   authUser: null,
-  isLoginPending: false
+  isUserActionPending: false
 };
 
 export const authReducer = (state: IAuth = authInitialState, action: AnyAction): IAuth => {
   switch (action.type) {
+    case allActions.PROFILE_UPDATE_START:
+    case allActions.SIGNUP_START: {
+      return {
+        ...state,
+        isUserActionPending: true
+      };
+    }
     case allActions.LOGIN_START: {
       return {
         ...authInitialState,
-        isLoginPending: true
+        isUserActionPending: true
       };
     }
     case allActions.PROFILE_UPDATE_SUCCESS:
@@ -25,7 +32,7 @@ export const authReducer = (state: IAuth = authInitialState, action: AnyAction):
       return {
         isLoggedIn: true,
         authUser,
-        isLoginPending: false
+        isUserActionPending: false
       };
     }
     case allActions.LOGOUT:
@@ -33,6 +40,14 @@ export const authReducer = (state: IAuth = authInitialState, action: AnyAction):
     case allActions.LOGIN_FAILURE: {
       return {
         ...authInitialState
+      };
+    }
+    case allActions.SIGNUP_SUCCESS:
+    case allActions.PROFILE_UPDATE_FAILURE:
+    case allActions.SIGNUP_FAILURE: {
+      return {
+        ...state,
+        isUserActionPending: false
       };
     }
   }

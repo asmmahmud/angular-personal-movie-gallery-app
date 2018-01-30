@@ -49,7 +49,6 @@ export class AuthEpics {
   signUpActionEpic(action$: ActionsObservable<AnyAction>): Observable<AnyAction> {
     return action$.ofType(allActions.SIGNUP_START)
       .mergeMap((action: AnyAction) => {
-        console.log('before signup sending: ', action.payload);
         return this.http.post(`${this.apiUrl}/api/users/register`, action.payload)
           .mergeMap(() => {
             return this.router.navigate(['signin']).then(() => AuthActions.signupSuccessAction());
@@ -61,14 +60,14 @@ export class AuthEpics {
   profileUpdateActionEpic(action$: ActionsObservable<AnyAction>): Observable<AnyAction> {
     return action$.ofType(allActions.PROFILE_UPDATE_START)
       .mergeMap((action: AnyAction) => {
-        console.log('before update sending: ', action.payload);
         return this.http.put<IProfileUpdateResponse>(
           `${this.apiUrl}/api/users/${action.payload.id}`, action.payload,
           {
             headers: new HttpHeaders().set('Authorization', `Bearer ${window.localStorage.getItem('access_token')}`)
           })
           .map((result: IProfileUpdateResponse) => {
-            console.log('updat response: ', result);
+            // console.log('updat response: ', result);
+            window.localStorage.setItem('auth_user', JSON.stringify(result));
             return AuthActions.profileUpdateSuccessAction(result);
           })
           .catch((error: HttpErrorResponse) =>

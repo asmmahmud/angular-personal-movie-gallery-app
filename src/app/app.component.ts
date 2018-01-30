@@ -23,7 +23,7 @@ import {HeaderComponent} from './layout/header/header.component';
               <ul class="nav nav-pills genre-list-nav flex-column" role="tablist" aria-orientation="vertical">
                 <li class="nav-item">
                   <a class="nav-link" *ngFor="let genre of listOfGenres" [routerLink]="['/films']"
-                     [queryParams]="{genre: (genre !=='all'?genre: ''), q: '', p: 1}" [class.active]="genre == foundGenre"
+                     [queryParams]="{genre: genre, q: '', p: 1}" [class.active]="genre == foundGenre"
                   >{{genre}}</a>
                 </li>
               </ul>
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.filmService.genre$.subscribe((genre: string) => {
       setTimeout(() => {
-        this.foundGenre = genre ? genre : 'all';
+        this.foundGenre = genre ? genre : '';
       }, 0);
     });
   }
@@ -77,9 +77,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.headerComponent.isDropDownOpen = !this.headerComponent.isDropDownOpen;
   }
   userSignOutAction() {
-    this.router.navigate(['/']).then(() => {
-      this.authService.userSignOut();
-    });
+    this.authService.userSignOut();
+    setTimeout(() => {
+      this.router.navigate(['/signin']);
+    }, 0);
   }
   onDocumentClick(elem: HTMLElement) {
     if (this.headerComponent && this.headerComponent.isDropDownOpen) {

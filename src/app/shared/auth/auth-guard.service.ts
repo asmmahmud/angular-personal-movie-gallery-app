@@ -14,7 +14,9 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.authService.checkAuthentication()) {
-      return this.router.navigate(['']).then(() => false);
+      // console.log('AuthGuardService');
+      this.router.navigate(['/signin']);
+      return false;
     }
     return true;
   }

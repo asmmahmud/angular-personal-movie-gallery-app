@@ -11,7 +11,9 @@ export class RedirectIfLoggedin implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, routerState: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.checkAuthentication()) {
-      this.router.navigate(['/profile-edit']).then(() => false);
+      // console.log('RedirectIfLoggedin');
+      this.router.navigate(['/profile-edit']);
+      return false;
     }
     return true;
   }

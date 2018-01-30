@@ -36,7 +36,7 @@
           </div>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/films">Films</a>
+          <a class="nav-link" [routerLink]="['/films']" [queryParams]="{genre: '', p: 1}" >Films</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" routerLink="/about-us">About Us</a>

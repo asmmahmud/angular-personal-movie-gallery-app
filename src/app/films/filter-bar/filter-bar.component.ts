@@ -18,10 +18,6 @@ export class FilterBarComponent {
   @Output() searchTermChangeEvent = new EventEmitter<string>();
   listOfSoringCriteria = FilmModel.listOfSortingCriteria;
 
-  pageChanged(dropDown: HTMLSelectElement) {
-    const newPageNo = +dropDown.value;
-    this.pageChangeEvent.emit(newPageNo);
-  }
   criteriaChanged(dropDown: HTMLSelectElement) {
     const newCriteria = dropDown.value;
     this.sortingCriteriaChangeEvent.emit(newCriteria);

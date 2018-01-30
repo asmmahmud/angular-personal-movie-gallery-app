@@ -13,7 +13,9 @@
             <input id="first_name"
                    class="form-control"
                    formControlName="first_name"
-                   placeholder="First Name"/>
+                   placeholder="First Name"
+                   [readonly]="(isUserActionPending$ | async)"
+            />
             <div *ngIf="isValid('first_name')" class="alert alert-danger">
               <div *ngIf="isShow(['first_name'], 'required')">First Name can't be empty.</div>
               <div *ngIf="isShow(['first_name'], 'minlength')">First Name has to be atleast 3 characters long.</div>
@@ -24,7 +26,9 @@
             <input id="last_name"
                    class="form-control"
                    formControlName="last_name"
-                   placeholder="Last Name"/>
+                   placeholder="Last Name"
+                   [readonly]="(isUserActionPending$ | async)"
+            />
             <div *ngIf="isValid('last_name')" class="alert alert-danger">
               <div *ngIf="isShow(['last_name'], 'required')">Last name can't be empty.</div>
               <div *ngIf="isShow(['last_name'], 'minlength')">Last name has to be atleast 3 characters long.</div>
@@ -40,7 +44,12 @@
           <div formGroupName="passwords">
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" formControlName="password" id="password" class="form-control">
+              <input type="password"
+                     formControlName="password"
+                     id="password"
+                     class="form-control"
+                     [readonly]="(isUserActionPending$ | async)"
+              />
               <div *ngIf="isValid('passwords.password')" class="alert alert-danger">
                 <div *ngIf="isShow(['passwords','password'], 'required')">Password is required.</div>
                 <div *ngIf="isShow(['passwords','password'], 'minlength')">Password has to be atleast 4 characters
@@ -50,7 +59,12 @@
             </div>
             <div class="form-group">
               <label for="password_confirm">Confirm Password</label>
-              <input type="password" id="password_confirm" class="form-control" formControlName="password_confirm">
+              <input type="password"
+                     id="password_confirm"
+                     class="form-control"
+                     formControlName="password_confirm"
+                     [readonly]="(isUserActionPending$ | async)"
+              />
               <div class="alert alert-danger"
                    *ngIf="updateForm.get('passwords').hasError('notSame')
                         && !updateForm.get('passwords.password_confirm').untouched &&
@@ -64,15 +78,22 @@
             <input id="thumb_path"
                    class="form-control"
                    placeholder="Thumbnail Path"
-                   formControlName="thumb_path"/>
+                   formControlName="thumb_path"
+                   [readonly]="(isUserActionPending$ | async)"
+            />
             <div *ngIf="isValid('thumb_path')" class="alert alert-danger">
               <span *ngIf="isShow(['thumb_path'], 'pattern')">Please enter a valid Thumbnail Path.</span>
             </div>
           </div>
-          <button type="submit" (click)="onUpdate()" class="btn btn-outline-primary" [disabled]="!updateForm.valid">
+          <button *ngIf="!(isUserActionPending$ | async)" type="submit" (click)="onUpdate()" class="btn btn-outline-primary" [disabled]="!updateForm.valid">
             Update
           </button>
-          <button type="button" (click)="onUpdate()" class="btn btn-outline-secondary">Debug</button>
+          <div class="form-group" *ngIf="isUserActionPending$ | async">
+            <img
+              src="assets/ajax_loader_gray_128.gif"
+              alt="ajax request is going on ..."
+              style="width: 32px;" />
+          </div>
         </form>
       </div>
     </div>

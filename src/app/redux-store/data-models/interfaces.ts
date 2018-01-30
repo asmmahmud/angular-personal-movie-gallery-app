@@ -11,7 +11,7 @@ export interface IAppState {
 export interface IAuth {
   authUser: UserModel | null;
   isLoggedIn: boolean;
-  isLoginPending: boolean;
+  isUserActionPending: boolean;
 }
 
 export interface IFilmState {

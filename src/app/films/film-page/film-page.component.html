@@ -3,7 +3,8 @@
     &lt;&lt;Film List Page
   </a></div>
 </div>
-<div class="row" *ngIf="film">
+<app-ajax-loader width="128px" *ngIf="isFilmLoading$ | async"></app-ajax-loader>
+<div class="row" *ngIf="film && !(isFilmLoading$ | async)">
   <div class="col-md-12">
     <table class="table">
       <tr>
@@ -50,8 +51,11 @@
                 </tr>
               </table>
             </div>
-            <div class="col-md-7">
-              <img src="{{apiDomain + '/' + film.poster}}" class=" img-fluid film-poster-bg "/>
+            <div class="col-md-7 film-poster-big">
+              <img [defaultImage]="'assets/ajax_loader_gray_128.gif'"
+                   [lazyLoad]="apiDomain + '/' + film.poster"
+                   class="img-fluid"
+                    />
             </div>
           </div>
         </td>

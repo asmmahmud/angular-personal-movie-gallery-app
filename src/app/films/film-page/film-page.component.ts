@@ -36,6 +36,10 @@ import {FilmService} from '../../shared/films/film.service';
     .personal-note-para {
       margin: 1rem auto;
     }
+    .film-poster-big {
+      display: flex;
+      justify-content: center;
+    }
     .personal-note-para p {
       font-style: italic;
       padding: 0 .5rem 0;
@@ -50,7 +54,8 @@ export class FilmPageComponent implements OnInit, OnDestroy {
   film: FilmModel;
   @select(['films', 'allFilms']) allFilms$: Observable<IAllFilms>;
   @select(['auth', 'isLoggedIn']) isLoggedIn$: Observable<boolean>;
-  @select(['allStatuses', 'isFilmUpdating']) isFilmUpdating$: Observable<boolean>;
+  @select(['films', 'isFilmLoading']) isFilmLoading$: Observable<boolean>;
+
   constructor(private route: ActivatedRoute, private filmService: FilmService) {
     this.apiDomain = environment.apiServer;
   }
