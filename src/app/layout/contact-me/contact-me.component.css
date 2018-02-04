@@ -1,0 +1,23 @@
+.social-networks a .fa {
+  font-size: 22px;
+  font-weight: bold;
+  transition: 0.2s;
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
+}
+.social-networks a:hover {
+  background-color: rgb(100, 100, 100);
+  text-decoration: none;
+  color: #d84868;
+}
+.upwork-icon {
+  width: 26px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+a {
+  transition: all 0.2s ease-out;
+}

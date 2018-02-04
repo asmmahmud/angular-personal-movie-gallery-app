@@ -40,8 +40,20 @@ import {HeaderComponent} from './layout/header/header.component';
   `,
   styles: [`
     .genre-list-nav a.nav-link {
+      color: rgba(100, 100, 100, 1);
       text-align: center;
       text-transform: capitalize;
+    }
+    .genre-list-nav a.nav-link:hover {
+      text-decoration: none;
+      color: #d84b6b;
+      background-color: transparent;
+      border-bottom: 1px solid #d84b6b;
+    }
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+      background-color: transparent;
+      border-bottom: 1px solid #d84b6b;
+      color: #d84b6b;
     }
   `]
 })

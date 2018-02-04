@@ -1,0 +1,45 @@
+<footer id="myFooter">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-4">
+        <h5>Get started</h5>
+        <ul>
+          <li routerLinkActive="active"><a routerLink="/">Home</a></li>
+          <li routerLinkActive="active"><a routerLink="/signup">Sign up</a></li>
+          <li routerLinkActive="active"><a routerLink="/signin">Sign in</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <h5>About us</h5>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/contact-me">Contact me</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <div class="social-networks">
+          <a target="_blank" href="https://twitter.com/asmscorses" class="twitter" title="My Twitter">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com/asmmahmud" class="github" target="_blank" title="My github page">
+            <i class="fa fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://stackoverflow.com/users/story/1576255" class="stackoverflow" target="_blank"
+             title="My stackoverflow Profile">
+            <i class="fa fa-stack-overflow" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.upwork.com/o/profiles/users/_~01233afc5e2aac7f4f/"
+             class="upwork" title="My Upwork Profile" target="_blank">
+            <img #upworkImg (mouseover)="imgMouseOver(upworkImg)" (mouseleave)="imgMouseLeave(upworkImg)"
+                 src="assets/upwork.svg" class="upwork-icon" alt="Upwork"/>
+          </a>
+        </div>
+        <a routerLink="/contact-me" class="btn btn-default">Contact Me</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <p>© 2018 A.S.M. Mahmudul Hasan. All Rights Reserved.</p>
+  </div>
+</footer>

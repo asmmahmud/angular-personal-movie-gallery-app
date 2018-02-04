@@ -29,7 +29,7 @@ export class FilmsComponent implements OnInit, OnDestroy {
   @select(['films', 'allFilms']) allFilms$: Observable<IAllFilms>;
   @select(['films', 'isFilmLoading']) isFilmLoading$: Observable<boolean>;
   @select(['auth', 'isLoggedIn']) isLoggedIn$: Observable<boolean>;
-  // @select(['allStatuses', 'isFilmUpdating']) isFilmUpdating$: Observable<boolean>;
+  @select(['allStatuses', 'isFilmUpdating']) isFilmUpdating$: Observable<boolean>;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -80,7 +80,7 @@ export class FilmsComponent implements OnInit, OnDestroy {
         // console.log(allFilms);
         this.filmService.loadAllFilmsSync(allFilms);
         this.filmService.refreshTheList();
-        console.log('List refreshed. ');
+        // console.log('List refreshed. ');
       }));
   }
   ngOnDestroy() {

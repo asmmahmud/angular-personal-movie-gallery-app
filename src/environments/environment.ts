@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiServer: 'http://localhost:9000',
+  // apiServer: 'http://localhost:9000',
+  apiServer: 'https://film-diary-api-jwt-auth.herokuapp.com',
 };

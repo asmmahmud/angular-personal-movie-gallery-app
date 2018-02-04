@@ -27,6 +27,7 @@ import {UserService} from './shared/auth/user.service';
 import {RedirectIfLoggedin} from './shared/auth/redirect-if-loggedin';
 import {AuthGuardService} from './shared/auth/auth-guard.service';
 import {FilmService} from './shared/films/film.service';
+import { ContactMeComponent } from './layout/contact-me/contact-me.component';
 
 // import {createLogger} from 'redux-logger';
 
@@ -38,7 +39,8 @@ import {FilmService} from './shared/films/film.service';
     AlertComponent,
     AboutComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    ContactMeComponent
   ],
   imports: [
     BrowserModule,

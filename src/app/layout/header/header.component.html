@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container-fluid">
     <a routerLink="/" class="navbar-brand">
-      <h1>Film Diary</h1>
+      <h1>Personal Film Gallery</h1>
     </a>
     <button class="navbar-toggler"
             (click)="isCollapsed = !isCollapsed"
@@ -36,7 +36,7 @@
           </div>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/films']" [queryParams]="{genre: '', p: 1}" >Films</a>
+          <a class="nav-link" [routerLink]="['/films']" [queryParams]="{genre: '', p: 1}" >All Films</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" routerLink="/about-us">About Us</a>
